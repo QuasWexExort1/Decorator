@@ -108,12 +108,48 @@ class CriticalDecorator : WeaponDecorator
 
     public override string GetName()
     {
-        return weapon.GetName() + ", с критическим уроном!";
+        return weapon.GetName() + ", с критичесдким уроном!?";
     }
 
     public override int GetDamage()
     {
         return weapon.GetDamage() + 30;
+    }
+}
+
+class IceDecorator : WeaponDecorator
+{
+    public IceDecorator(IWeapon weapon) : base(weapon)
+    {
+
+    }
+
+    public override string GetName()
+    {
+        return weapon.GetName() + ", со льдом";
+    }
+
+    public override int GetDamage()
+    {
+        return weapon.GetDamage() + 30;
+    }
+}
+
+class VampireDecorator : WeaponDecorator
+{
+    public VampireDecorator(IWeapon weapon) : base(weapon)
+    {
+
+    }
+
+    public override string GetName()
+    {
+        return weapon.GetName() + ", с бонусным уроном по вампирам!";
+    }
+
+    public override int GetDamage()
+    {
+        return weapon.GetDamage() + 15;
     }
 }
 
@@ -124,22 +160,22 @@ class Program
         IWeapon weapon = new Sword();
 
         weapon = new FireDecorator(weapon);
-
         weapon = new PoisonDecorator(weapon);
+        weapon = new CriticalDecorator(weapon);
 
         Console.WriteLine(weapon.GetName());
         Console.WriteLine(weapon.GetDamage());
 
 
-        IWeapon bow = new Bow();
-        bow = new PoisonDecorator(bow);
-        bow = new CriticalDecorator(bow);
-        Console.WriteLine(bow.GetName());
-        Console.WriteLine(bow.GetDamage());
+        //IWeapon bow = new Bow();
+        //bow = new PoisonDecorator(bow);
+        //bow = new CriticalDecorator(bow);
+        //Console.WriteLine(bow.GetName());
+        //Console.WriteLine(bow.GetDamage());
 
-        IWeapon staff = new Staff();
-        staff = new FireDecorator(staff);
-        Console.WriteLine(staff.GetName());
-        Console.WriteLine(staff.GetDamage());
+        //IWeapon staff = new Staff();
+        //staff = new FireDecorator(staff);
+        //Console.WriteLine(staff.GetName());
+        //Console.WriteLine(staff.GetDamage());
     }
 }
